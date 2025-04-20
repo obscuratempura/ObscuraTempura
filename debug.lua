@@ -1,13 +1,12 @@
--- debug.lua
-
 local Debug = {}
 Debug.messages = {}
 Debug.font = love.graphics.newFont(12)
-Debug.visible = true -- Set to true to display debug screen by default
+Debug.visible = true -- Start with debug visible
 
--- Toggle the visibility of the debug screen
+-- Toggle debug visibility
 function Debug.toggle()
     Debug.visible = not Debug.visible
+    table.insert(Debug.messages, "Debug visibility toggled: " .. tostring(Debug.visible))
 end
 
 -- Add a message to the debug screen
@@ -26,7 +25,7 @@ function Debug.draw()
     love.graphics.setFont(Debug.font)
     love.graphics.setColor(0, 0, 0, 0.5) -- Semi-transparent background
     love.graphics.rectangle("fill", 5, 5, 300, #Debug.messages * 15 + 10)
-    
+
     love.graphics.setColor(1, 1, 1, 1) -- White color for text
     local y = 10
     for i = #Debug.messages, 1, -1 do

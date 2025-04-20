@@ -9,12 +9,12 @@ function Level2.new()
     self.playerPosition = {x = 200, y = 200}  -- Example starting position
     self.goal = {x = 3800, y = 3800, radius = 50}  -- Example goal position (end of the level)
     
-    self:createMaze()
+    self:createBonepit()
     self:generateDecorations()
     return self
 end
 
-function Level2:createMaze()
+function Level2:createBonepit()
     -- Define the outer walls only for a large open space
     self.walls = {}
 
@@ -66,7 +66,7 @@ function Level2:update(dt)
 end
 
 function Level2:draw()
-    -- Draw maze walls
+    -- Draw  Bonepit walls
     love.graphics.setColor(0.5, 0.5, 0.5)
     for _, wall in ipairs(self.walls) do
         love.graphics.rectangle("fill", wall.x, wall.y, wall.width, wall.height)
